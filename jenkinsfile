@@ -1,9 +1,12 @@
 pipeline {
     agent any
-    stages {
+    environment {
+        PATH = ' /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/balaraju/apache-maven-3.6.3/bin:/home/balaraju/jdk1.8.0_241/bin'
+    }
+     stages {
         stage ('build') {
            steps {
-              echo 'maven project bulded'
+              sh 'mvn compile'
            }
         }
         stage ('publish_reports') {
