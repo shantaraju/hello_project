@@ -9,9 +9,14 @@ pipeline {
               sh 'mvn compile'
            }
         }
+        stage ('test') {
+           steps {
+              archiveArtifacts '**/*.jar'
+           }
+        }
         stage ('publish_reports') {
            steps {
-              echo 'reports are done'
+              junit 'TEST-*.xml'
            }
         }
     }
