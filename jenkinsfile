@@ -11,12 +11,12 @@ pipeline {
         }
         stage ('test') {
            steps {
-              archiveArtifacts '**/*.jar'
+              echo ' test results'
            }
         }
         stage ('publish_reports') {
            steps {
-              junit 'TEST-*.xml'
+              junit '**/TEST-*.xml'
            }
         }
     }
