@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('build') {
            steps {
-              sh 'package'
+              sh 'mvn build'
            }
         }
         stage ('publish_reports') {
