@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { node { label 'daddy'} }
     environment {
         PATH = ' /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/balaraju/apache-maven-3.6.3/bin:/home/balaraju/jdk1.8.0_241/bin'
     }
