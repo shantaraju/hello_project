@@ -6,12 +6,12 @@ pipeline {
      stages {
         stage ('build') {
            steps {
-              sh 'mvn compile'
+              sh 'mvn install'
            }
         }
-        stage ('test') {
+        stage ('archive artifacts') {
            steps {
-              echo ' test results'
+              archiveArtifacts '**/*.jar'
            }
         }
         stage ('publish_reports') {
