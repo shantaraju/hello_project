@@ -1,26 +1,18 @@
 pipeline {
-    agent { label 'daddy'}
+    agent any
     environment {
-        PATH = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bala/jdk1.8.0_241/bin:/home/bala/apache-maven-3.6.3/bin'
+        PATH= '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/balaraju/apache-maven-3.6.3/bin:/home/balaraju/jdk1.8.0_241/bin:/home/balaraju/apache-tomcat-8.5.51/bin'
     }
-     stages {
+    stages {
         stage ('build') {
-           environment {
-              PATH = '/home/bala/jdk1.8.0_241/bin:/home/bala/apache-maven-3.6.3/bin'
-           }
-           steps {
-              sh 'mvn install'
-           }
+            steps {
+                sh 'mvn compile'
+            }
         }
-        stage ('archive artifacts') {
-           steps {
-              archiveArtifacts '**/*.jar'
-           }
+        stage ('archive') {
+            steps {
+                archiveArtifacts '**/*.jar'
+            }
         }
-        stage ('publish_reports') {
-           steps {
-              echo 'test results are also done'
-           }
-        }
-    }
+    }    
 }
