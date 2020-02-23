@@ -14,5 +14,10 @@ pipeline {
                 archiveArtifacts '**/*.jar'
             }
         }
+        stage ('fingersprints') {
+            steps {
+                fingerprint '**/*.jar'
+            }
+        }
     }    
 }
